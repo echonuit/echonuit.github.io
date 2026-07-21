@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VigieChiro Companion - de la carte SD au dépôt Vigie-Chiro</title>
+<meta name="description" content="Application libre de bureau qui accompagne les naturalistes dans le traitement d'une nuit de capture acoustique de chauves-souris, depuis la carte SD de l'enregistreur jusqu'au dépôt sur la plateforme Vigie-Chiro.">
+<link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icone-256.png">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="VigieChiro Companion">
+<meta property="og:description" content="De la carte SD au dépôt Vigie-Chiro, sans outil tiers.">
+<meta property="og:image" content="https://echonuit.fr/assets/hero-bandeau.webp">
+<meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero__fond" src="assets/hero-bandeau.webp" alt="" aria-hidden="true">
+  <div class="hero__voile"></div>
+  <div class="hero__contenu">
+    <img class="hero__icone" src="assets/icone-256.png" width="88" height="88"
+         alt="Logo de VigieChiro Companion : un enregistreur autonome sous la lune.">
+    <h1>VigieChiro Companion</h1>
+    <p class="hero__accroche">
+      L'application libre qui accompagne les naturalistes chiroptérologues,
+      <strong>de la carte SD au dépôt Vigie-Chiro</strong>.
+    </p>
+
+    <div class="telechargement">
+      <a id="btn-telecharger" class="bouton bouton--primaire"
+         href="https://github.com/echonuit/vigiechiro-pr-companion/releases/latest">
+        <span id="btn-libelle">Télécharger</span>
+      </a>
+      <p class="telechargement__note">
+        <span id="version-note">Gratuit et open source, sous licence GPLv3.</span>
+        <a id="lien-tous-formats" href="https://github.com/echonuit/vigiechiro-pr-companion/releases/latest">
+          Tous les formats et systèmes
+        </a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section section--probleme">
+    <h2>Une nuit d'enregistrement, du terrain au dépôt</h2>
+    <p>
+      Des enregistreurs autonomes posés sur le terrain captent les ultrasons d'une nuit entière.
+      Restent ensuite des milliers de fichiers à trier, vérifier, nommer et déposer.
+    </p>
+    <p>
+      VigieChiro Companion prend en charge cette chaîne&nbsp;: <strong>importer</strong> la carte SD,
+      <strong>vérifier</strong> la qualité des enregistrements, <strong>préparer et suivre</strong> le
+      dépôt sur la plateforme nationale, puis <strong>relire</strong> les espèces identifiées par
+      Tadarida. Sans tableur, sans script, sans outil tiers.
+    </p>
+    <figure class="parcours">
+      <img src="assets/parcours.svg" alt="Parcours d'une nuit : depuis la carte SD, importer puis vérifier puis déposer ; le dépôt sur Vigie-Chiro renvoie les résultats Tadarida 24 à 48 heures plus tard ; vient enfin l'étape de validation.">
+    </figure>
+  </section>
+
+  <section class="section">
+    <h2>L'application</h2>
+    <figure class="capture">
+      <img src="assets/apercu-accueil.png" loading="lazy"
+           alt="Écran d'accueil de VigieChiro Companion : un tableau de bord et des cartes d'activités menant aux sites, à l'importation, à l'écoute et à la carte.">
+      <figcaption>L'écran d'accueil, d'où l'on rejoint chaque activité.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <h2>Aller plus loin</h2>
+    <div class="cartes">
+      <a class="carte" href="https://companion.echonuit.fr/">
+        <h3>Guide d'utilisation</h3>
+        <p>Installer, prendre en main, comprendre chaque écran.</p>
+      </a>
+      <a class="carte" href="https://brief.echonuit.fr/">
+        <h3>Dossier de conception</h3>
+        <p>Le besoin, le modèle de données, les parcours et les maquettes.</p>
+      </a>
+      <a class="carte" href="https://companion-dev.echonuit.fr/">
+        <h3>Documentation développeur</h3>
+        <p>Architecture, conventions, et comment contribuer au code.</p>
+      </a>
+      <a class="carte" href="https://github.com/echonuit/vigiechiro-pr-companion">
+        <h3>Code source</h3>
+        <p>Le dépôt, les tickets et les versions publiées.</p>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <p>
+    <strong>VigieChiro Companion</strong> est un logiciel libre sous licence
+    <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>, publié par <strong>Echonuit</strong>.
+  </p>
+  <p class="pied__mentions">
+    Né d'une commande de Samuel Busson (CEREMA). Vigie-Chiro est un programme du Muséum national
+    d'Histoire naturelle&nbsp;; ce logiciel en est un compagnon indépendant.
+  </p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

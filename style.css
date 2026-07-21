@@ -1,0 +1,204 @@
+/* VigieChiro Companion - page d'accueil (echonuit.fr)
+   Sobre, lisible en clair comme en sombre, sans dépendance externe. */
+
+:root {
+  --fond: #ffffff;
+  --fond-doux: #f5f7f6;
+  --texte: #1c2321;
+  --texte-doux: #4a5754;
+  --accent: #1e8449;          /* vert de la doc produit */
+  --accent-fonce: #166437;
+  --bordure: #dfe5e3;
+  --ombre: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #14181a;
+    --fond-doux: #1b2124;
+    --texte: #e8eceb;
+    --texte-doux: #a9b5b1;
+    --accent: #3fbf75;
+    --accent-fonce: #2fa662;
+    --bordure: #2b3336;
+    --ombre: 0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 400 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; }
+a { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.25rem 3.5rem;
+  overflow: hidden;
+}
+
+.hero__fond {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Voile sombre : le bandeau est une scène nocturne, le texte doit rester lisible
+   quel que soit le thème du visiteur. */
+.hero__voile {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,12,16,.55) 0%, rgba(6,12,16,.78) 100%);
+  z-index: -1;
+}
+
+.hero__contenu { max-width: 46rem; color: #f4f8f7; }
+
+.hero__icone {
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.45);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  margin: 0 0 .6rem;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.hero__accroche {
+  margin: 0 auto 2rem;
+  max-width: 34rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  color: #dfe9e6;
+}
+
+.hero__accroche strong { color: #fff; }
+
+/* ---------- Téléchargement ---------- */
+
+.telechargement { display: flex; flex-direction: column; align-items: center; gap: .9rem; }
+
+.bouton {
+  display: inline-block;
+  padding: .95rem 2rem;
+  border-radius: 10px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .15s ease, transform .15s ease;
+}
+
+.bouton--primaire { background: var(--accent); color: #fff; box-shadow: var(--ombre); }
+.bouton--primaire:hover { background: var(--accent-fonce); transform: translateY(-1px); }
+.bouton:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.telechargement__note {
+  margin: 0;
+  font-size: .92rem;
+  color: #cfdcd8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  justify-content: center;
+}
+
+.telechargement__note a { color: #bfe8d0; }
+
+/* ---------- Sections ---------- */
+
+.section {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+}
+
+.section h2 {
+  font-size: clamp(1.5rem, 3.4vw, 1.9rem);
+  line-height: 1.25;
+  margin: 0 0 1rem;
+  letter-spacing: -.01em;
+}
+
+.section p { color: var(--texte-doux); margin: 0 0 1rem; }
+.section--probleme { border-bottom: 1px solid var(--bordure); }
+
+.parcours { margin: 2rem 0 0; text-align: center; }
+.parcours img { width: 100%; max-width: 40rem; }
+
+.capture { margin: 0; }
+
+.capture img {
+  width: 100%;
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+  display: block;
+}
+
+.capture figcaption {
+  margin-top: .7rem;
+  font-size: .9rem;
+  color: var(--texte-doux);
+  text-align: center;
+}
+
+/* ---------- Cartes ---------- */
+
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.carte {
+  display: block;
+  padding: 1.2rem 1.3rem;
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+.carte:hover { border-color: var(--accent); transform: translateY(-2px); }
+.carte:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.carte h3 { margin: 0 0 .35rem; font-size: 1.05rem; color: var(--accent); }
+.carte p { margin: 0; font-size: .93rem; color: var(--texte-doux); }
+
+/* ---------- Pied ---------- */
+
+.pied {
+  border-top: 1px solid var(--bordure);
+  padding: 2.5rem 1.25rem 3rem;
+  text-align: center;
+  color: var(--texte-doux);
+  font-size: .92rem;
+}
+
+.pied p { max-width: 46rem; margin: 0 auto .6rem; }
+.pied__mentions { font-size: .86rem; opacity: .85; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
