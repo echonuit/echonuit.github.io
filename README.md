@@ -21,8 +21,9 @@ convert ../vigiechiro-pr-companion/.github/assets/apercu-<ecran>.png \
         -define webp:lossless=true assets/apercu-<ecran>.webp
 ```
 
-Les six captures retenues et leurs légendes vivent dans `index.html`. Elles suivent le parcours
-décrit plus haut sur la page : importer, vérifier, déposer, relire les espèces, suivre.
+Les captures retenues et leurs légendes vivent dans `index.html` : l'écran d'accueil en pleine
+largeur, puis la galerie de vignettes qui suit le parcours décrit plus haut sur la page (importer,
+vérifier, déposer, relire les espèces, explorer, suivre).
 
 ## Incrémenter `?v=` en modifiant le CSS ou le JS
 
