@@ -164,10 +164,6 @@ a { color: var(--accent); }
 
 /* ---------- Galerie de vignettes ---------- */
 
-/* Plus large que les autres sections : cinq vignettes tiennent alors en deux rangées
-   plutôt que de s'étirer en colonne. */
-.section--galerie { max-width: 64rem; }
-
 .galerie {
   list-style: none;
   padding: 0;
