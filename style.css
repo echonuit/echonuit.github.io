@@ -162,6 +162,49 @@ a { color: var(--accent); }
   text-align: center;
 }
 
+/* ---------- Galerie d'écrans ---------- */
+
+/* Plus large que les autres sections : les captures d'écran sont denses, et deux
+   colonnes de 22rem restent lisibles là où deux colonnes de 15rem ne le seraient pas. */
+.section--galerie { max-width: 64rem; }
+
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2.25rem 1.75rem;
+  align-items: start; /* les captures n'ont pas toutes le même rapport largeur/hauteur */
+  margin-top: 2rem;
+}
+
+.galerie .capture a {
+  display: block;
+  border-radius: 8px;
+}
+
+.galerie .capture a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.galerie .capture img { transition: transform .18s ease, box-shadow .18s ease; }
+
+.galerie .capture a:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgb(0 0 0 / .18);
+}
+
+.galerie .capture figcaption { text-align: left; }
+.galerie .capture figcaption strong { color: var(--texte); }
+
+/* La vue d'ensemble ferme la série : elle prend toute la largeur, ce qui évite de la
+   laisser seule sur sa ligne et rend sa carte lisible. */
+.galerie .capture--pleine { grid-column: 1 / -1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .galerie .capture img { transition: none; }
+  .galerie .capture a:hover img { transform: none; }
+}
+
 /* ---------- Cartes ---------- */
 
 .cartes {
