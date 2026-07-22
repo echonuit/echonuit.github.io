@@ -24,6 +24,16 @@ convert ../vigiechiro-pr-companion/.github/assets/apercu-<ecran>.png \
 Les six captures retenues et leurs légendes vivent dans `index.html`. Elles suivent le parcours
 décrit plus haut sur la page : importer, vérifier, déposer, relire les espèces, suivre.
 
+## Incrémenter `?v=` en modifiant le CSS ou le JS
+
+`index.html` charge `style.css?v=<date>` et `app.js?v=<date>`. **Ce jeton est à changer à chaque
+modification de l'un ou de l'autre.**
+
+GitHub Pages sert le HTML, le CSS et le JS avec des caches indépendants de dix minutes. Sans jeton,
+un visiteur qui revient dans cette fenêtre reçoit le **nouveau HTML avec l'ancienne feuille de
+style**, et voit une mise en page cassée sans avoir aucune raison de soupçonner un cache. C'est
+arrivé le 2026-07-22 sur la galerie : elle s'affichait en une colonne, avec les légendes centrées.
+
 ## Les autres sites
 
 - Guide d'utilisation : <https://companion.echonuit.fr>
