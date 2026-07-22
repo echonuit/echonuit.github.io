@@ -84,3 +84,50 @@
       /* Silencieux : le lien par défaut vers la page des versions reste valable. */
     });
 })();
+
+/* Visionneuse de la galerie : agrandit une capture par-dessus la page.
+ *
+ * Les vignettes sont d'abord des LIENS vers l'image. Sans JavaScript, ou si <dialog> n'est pas
+ * géré, le clic ouvre donc l'image normalement : personne ne se retrouve devant une vignette
+ * morte. Le script ne fait qu'intercepter ce clic quand il peut faire mieux.
+ *
+ * <dialog>.showModal() apporte gratuitement ce qu'une visionneuse maison réimplémente mal :
+ * fermeture par Échap, piège à focus, retour du focus sur la vignette d'origine, et inertie du
+ * reste de la page pour les lecteurs d'écran. */
+(function () {
+  "use strict";
+
+  var boite = document.getElementById("visionneuse");
+  var image = document.getElementById("visionneuse-image");
+  var legende = document.getElementById("visionneuse-legende");
+  if (!boite || !image || !legende || typeof boite.showModal !== "function") return;
+
+  var vignettes = document.querySelectorAll(".vignette");
+
+  for (var i = 0; i < vignettes.length; i++) {
+    vignettes[i].addEventListener("click", function (evenement) {
+      // Clic milieu, Ctrl/Cmd+clic : l'usage attendu est d'ouvrir dans un onglet, on n'intercepte pas.
+      if (evenement.metaKey || evenement.ctrlKey || evenement.shiftKey || evenement.button !== 0) return;
+      evenement.preventDefault();
+      var vignette = evenement.currentTarget;
+      var source = vignette.querySelector("img");
+      image.src = vignette.getAttribute("href");
+      image.alt = source ? source.alt : "";
+      legende.textContent = vignette.getAttribute("data-legende") || "";
+      boite.showModal();
+    });
+  }
+
+  // Clic hors de l'image : le <dialog> occupe toute la zone, on ne ferme donc que si le clic
+  // tombe sur le fond (l'élément dialog lui-même) et non sur l'image ou la légende.
+  boite.addEventListener("click", function (evenement) {
+    if (evenement.target === boite) boite.close();
+  });
+
+  // Libère la mémoire de l'image affichée, et évite qu'elle réapparaisse au prochain clic
+  // avant le chargement de la suivante.
+  boite.addEventListener("close", function () {
+    image.removeAttribute("src");
+    image.alt = "";
+  });
+})();

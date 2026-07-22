@@ -7,7 +7,11 @@
 <meta name="description" content="Application libre de bureau qui accompagne les naturalistes dans le traitement d'une nuit de capture acoustique de chauves-souris, depuis la carte SD de l'enregistreur jusqu'au dépôt sur la plateforme Vigie-Chiro.">
 <link rel="icon" href="assets/icone.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icone-256.png">
-<link rel="stylesheet" href="style.css">
+<!-- Le jeton ?v= est à incrémenter à CHAQUE modification de style.css ou app.js. GitHub Pages
+     sert le HTML, le CSS et le JS avec des caches indépendants de 10 minutes : sans ce jeton, un
+     visiteur qui revient reçoit le nouveau HTML avec l'ancienne feuille de style, et voit une mise
+     en page cassée sans le savoir. Constaté sur la galerie, le 2026-07-22. -->
+<link rel="stylesheet" href="style.css?v=2026-07-22b">
 <meta property="og:title" content="VigieChiro Companion">
 <meta property="og:description" content="De la carte SD au dépôt Vigie-Chiro, sans outil tiers.">
 <meta property="og:image" content="https://echonuit.fr/assets/hero-bandeau.webp">
@@ -73,69 +77,74 @@
   <section class="section section--galerie">
     <h2>Cinq écrans, cinq moments de la nuit</h2>
     <p>
-      Chaque étape du parcours a son écran. Cliquez sur une image pour la voir en grand.
+      Chaque étape du parcours a son écran. Cliquez sur une vignette pour la voir en grand.
     </p>
 
-    <div class="galerie">
+    <ul class="galerie">
 
-      <figure class="capture">
-        <a href="assets/apercu-import-assistant.webp">
+      <li>
+        <a class="vignette" href="assets/apercu-import-assistant.webp"
+           data-legende="Importer — l'assistant inspecte la carte SD, reconnaît le journal du capteur et rattache la nuit à un site, un point et un passage. Vos fichiers d'origine ne sont jamais modifiés.">
           <img src="assets/apercu-import-assistant.webp" loading="lazy" width="1100" height="950"
                alt="Assistant d'importation en trois étapes : choix du dossier source, inspection du dossier (journal du capteur, relevé climatique, fichiers WAV détectés) et rattachement de la nuit à un site, un point et un passage, avec une carte et un aperçu du renommage des fichiers.">
+          <span class="vignette__titre">Importer</span>
+          <span class="vignette__note">la carte SD devient une nuit rattachée</span>
         </a>
-        <figcaption>
-          <strong>Importer</strong> — l'assistant inspecte la carte SD, reconnaît le journal du
-          capteur et rattache la nuit à un site, un point et un passage. Vos fichiers d'origine ne
-          sont jamais modifiés.
-        </figcaption>
-      </figure>
+      </li>
 
-      <figure class="capture">
-        <a href="assets/apercu-qualification.webp">
+      <li>
+        <a class="vignette" href="assets/apercu-qualification.webp"
+           data-legende="Vérifier — quelques séquences réparties sur la nuit suffisent à juger si l'enregistrement est exploitable, sonogramme et spectrogramme à l'appui.">
           <img src="assets/apercu-qualification.webp" loading="lazy" width="1240" height="900"
                alt="Écran de vérification : une sélection de séquences réparties sur la nuit, chacune notée bonne, mauvaise ou inexploitable, avec le sonogramme et le spectrogramme de la séquence sélectionnée et un verdict global pour le passage.">
+          <span class="vignette__titre">Vérifier</span>
+          <span class="vignette__note">écouter, juger, décider du passage</span>
         </a>
-        <figcaption>
-          <strong>Vérifier</strong> — quelques séquences réparties sur la nuit suffisent à juger si
-          l'enregistrement est exploitable, sonogramme et spectrogramme à l'appui.
-        </figcaption>
-      </figure>
+      </li>
 
-      <figure class="capture">
-        <a href="assets/apercu-lot-televerser.webp">
+      <li>
+        <a class="vignette" href="assets/apercu-lot-televerser.webp"
+           data-legende="Déposer — contrôles de cohérence, archives découpées au format attendu par la plateforme, téléversement vers Vigie-Chiro et suivi de l'état du passage.">
           <img src="assets/apercu-lot-televerser.webp" loading="lazy" width="980" height="1180"
                alt="Écran de dépôt en quatre étapes : contrôles de cohérence tous au vert, archives de dépôt générées, téléversement vers Vigie-Chiro, puis marquage du passage comme déposé.">
+          <span class="vignette__titre">Déposer</span>
+          <span class="vignette__note">contrôler, archiver, téléverser</span>
         </a>
-        <figcaption>
-          <strong>Déposer</strong> — contrôles de cohérence, archives découpées au format attendu
-          par la plateforme, téléversement vers Vigie-Chiro et suivi de l'état du passage.
-        </figcaption>
-      </figure>
+      </li>
 
-      <figure class="capture">
-        <a href="assets/apercu-sons-validation.webp">
+      <li>
+        <a class="vignette" href="assets/apercu-sons-validation.webp"
+           data-legende="Relire les espèces — les propositions de Tadarida arrivent avec leur probabilité. Vous confirmez, corrigez, ou en discutez avec le validateur.">
           <img src="assets/apercu-sons-validation.webp" loading="lazy" width="1100" height="860"
                alt="Écran de relecture des espèces : un tableau des observations avec la proposition de Tadarida et sa probabilité face au taxon retenu, le spectrogramme du cri, et un fil de discussion avec le validateur.">
+          <span class="vignette__titre">Relire les espèces</span>
+          <span class="vignette__note">confirmer ou corriger Tadarida</span>
         </a>
-        <figcaption>
-          <strong>Relire les espèces</strong> — les propositions de Tadarida arrivent avec leur
-          probabilité. Vous confirmez, corrigez, ou en discutez avec le validateur.
-        </figcaption>
-      </figure>
+      </li>
 
-      <figure class="capture capture--pleine">
-        <a href="assets/apercu-multisite.webp">
+      <li>
+        <a class="vignette" href="assets/apercu-multisite.webp"
+           data-legende="Suivre — tous les passages de tous les sites, sur une carte et dans un tableau : où en est chaque nuit, d'un coup d'œil.">
           <img src="assets/apercu-multisite.webp" loading="lazy" width="1100" height="620"
                alt="Vue d'ensemble : une carte des carrés et points d'écoute à côté d'un tableau des passages, chacun avec son statut, d'importé à déposé.">
+          <span class="vignette__titre">Suivre</span>
+          <span class="vignette__note">où en est chaque nuit</span>
         </a>
-        <figcaption>
-          <strong>Suivre</strong> — tous les passages de tous les sites, sur une carte et dans un
-          tableau : où en est chaque nuit, d'un coup d'œil.
-        </figcaption>
-      </figure>
+      </li>
 
-    </div>
+    </ul>
   </section>
+
+  <!-- Visionneuse : remplie et ouverte par app.js au clic sur une vignette. Sans JavaScript,
+       les vignettes restent de simples liens vers l'image, qui s'ouvre normalement. -->
+  <dialog id="visionneuse" class="visionneuse" aria-label="Capture d'écran en grand">
+    <form method="dialog">
+      <button class="visionneuse__fermer" aria-label="Fermer">&times;</button>
+    </form>
+    <img id="visionneuse-image" alt="">
+    <p id="visionneuse-legende"></p>
+  </dialog>
+
 
   <section class="section">
     <h2>Aller plus loin</h2>
@@ -172,6 +181,6 @@
   </p>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=2026-07-22b"></script>
 </body>
 </html>
