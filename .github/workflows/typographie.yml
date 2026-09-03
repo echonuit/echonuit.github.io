@@ -1,0 +1,29 @@
+# La prose de la page d'accueil est la premiere chose qu'un visiteur lit, et rien ne la tenait.
+# Ce depot n'avait aucune integration continue : la regle ne vivait que dans l'attention de qui
+# editait, et six tirets cadratins y ont vecu jusqu'a #7.
+name: Typographie
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  typographie:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      # L'auto-test AVANT le verdict : un garde qui a cesse de detecter reste vert, et ce vert-la
+      # est indiscernable d'un depot propre. Il joue deux cas, dont un qui doit refuser.
+      - name: Le garde sait encore refuser
+        run: |
+          chmod +x .github/scripts/verifie-typographie.sh
+          ./.github/scripts/verifie-typographie.sh --auto-test
+
+      - name: Aucun cadratin, aucune apostrophe courbe
+        run: ./.github/scripts/verifie-typographie.sh
